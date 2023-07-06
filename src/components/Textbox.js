@@ -45,16 +45,16 @@ export default function Textbox() {
             onChange={handleOnChange}
           ></textarea>
         </div>
-        <button className="btn btn-primary" onClick={convertToUp}>Upper Case</button>
-        <button className="btn btn-primary ms-3" onClick={convertToLow}>Lower Case</button>
-        <button className="btn btn-primary ms-3" onClick={copyToClipboard}>Copy Text</button>
-        <button className="btn btn-primary ms-3" onClick={removeSpace}>Remove Extra Spaces</button>
-        <button className="btn btn-danger ms-3" onClick={deleteText}>Delete</button>
+        <button disabled={text.length==0} className="btn btn-primary" onClick={convertToUp}>Upper Case</button>
+        <button disabled={text.length==0} className="btn btn-primary ms-3 my-1" onClick={convertToLow}>Lower Case</button>
+        <button disabled={text.length==0} className="btn btn-primary ms-3 my-1" onClick={copyToClipboard}>Copy Text</button>
+        <button disabled={text.length==0} className="btn btn-primary ms-3 my-1" onClick={removeSpace}>Remove Extra Spaces</button>
+        <button disabled={text.length==0} className="btn btn-danger ms-3 my-1" onClick={deleteText}>Delete</button>
       </div>
 
       <div className="container mt-3">
         <h1>Text Details</h1>
-        <p>Number of words {text.split(" ").length}</p>
+        <p>Number of words {text.split(/\s+/).filter((element)=>{return element.length!=0}).length}</p>
         <p>Number of characters {text.length}</p>
       </div>
     </>
